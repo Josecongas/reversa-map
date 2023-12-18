@@ -1,0 +1,16 @@
+<div class="map">
+  <google-map
+    height="100%"
+    width="100%"
+    [center]="center"
+    [zoom]="zoom"
+    [options]="options"
+  >
+    <map-marker
+      *ngFor="let spot of spots"
+      [position]="spot.position"
+      [label]="spot.label"
+    >
+    </map-marker>
+  </google-map>
+</div>
