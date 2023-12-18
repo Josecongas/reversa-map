@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+import { mapStyles } from '../config/mapConfig';
 
 @Component({
   selector: 'app-map',
@@ -10,7 +11,7 @@ export class MapComponent implements OnInit {
   markerOptions: google.maps.MarkerOptions = { draggable: false };
   position: google.maps.LatLngLiteral = { lat: 39.5, lng: -0.393 };
   center = { lng: -0.392787, lat: 39.467 };
-  zoom = 13;
+  zoom = 14;
   options: google.maps.MapOptions = {
     zoomControl: true,
     scrollwheel: true,
@@ -18,12 +19,7 @@ export class MapComponent implements OnInit {
     maxZoom: 15,
     minZoom: 8,
     disableDefaultUI: true,
-    styles: [
-      {
-        featureType: 'poi',
-        stylers: [{ visibility: 'off' }],
-      },
-    ],
+    styles: mapStyles,
   };
   spots: Spot[] = [
     { position: { lat: 39.49, lng: -0.3763 }, label: 'A', title: 'Oro' },
