@@ -15,16 +15,12 @@ export const mapStyles: any = [
   {
     featureType: 'poi',
     elementType: 'labels',
-    stylers: [
-      { visibility: 'off' }, // Oculta las etiquetas de los lugares de interés
-    ],
+    stylers: [{ visibility: 'off' }],
   },
   {
     featureType: 'poi',
     elementType: 'geometry',
-    stylers: [
-      { visibility: 'off' }, // Oculta la geometría de los lugares de interés
-    ],
+    stylers: [{ visibility: 'off' }],
   },
   {
     featureType: 'poi.park',
@@ -67,6 +63,14 @@ export const mapStyles: any = [
       { visibility: 'off' }, // Oculta las etiquetas de las carreteras
     ],
   },
+
+  {
+    featureType: 'road',
+    elementType: 'labels.text',
+    stylers: [
+      { visibility: 'on' }, // Muestra los nombres de las calles
+    ],
+  },
   {
     featureType: 'road.highway',
     elementType: 'labels.text',
@@ -85,7 +89,7 @@ export const mapStyles: any = [
     featureType: 'road.local',
     elementType: 'labels.text',
     stylers: [
-      { visibility: 'off' }, // Oculta las etiquetas de las carreteras locales
+      { visibility: 'on' }, // Oculta las etiquetas de las carreteras locales
     ],
   },
   {
@@ -129,5 +133,19 @@ export const mapStyles: any = [
     featureType: 'poi.attraction',
     elementType: 'labels',
     stylers: [{ visibility: 'off' }],
+  },
+  {
+    featureType: 'administrative',
+    elementType: 'labels.text',
+    stylers: [
+      { visibility: 'off' }, // Oculta los nombres de los distritos
+    ],
+  },
+  {
+    featureType: 'administrative.neighborhood',
+    elementType: 'labels.text',
+    stylers: [
+      { visibility: 'off' }, // Oculta los nombres de los barrios
+    ],
   },
 ];

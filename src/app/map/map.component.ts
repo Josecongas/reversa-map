@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
-    maxZoom: 15,
+    maxZoom: 17,
     minZoom: 8,
     disableDefaultUI: true,
     styles: mapStyles,
