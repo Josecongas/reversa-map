@@ -148,4 +148,11 @@ export const mapStyles: any = [
       { visibility: 'off' }, // Oculta los nombres de los barrios
     ],
   },
+  {
+    featureType: 'transit.line',
+    elementType: 'labels.text',
+    stylers: [
+      { visibility: 'off' }, // Oculta el texto de las líneas de transporte, que incluye los ferris
+    ],
+  },
 ];
