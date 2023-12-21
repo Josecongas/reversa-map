@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
 import { Spot, spots } from '../config/spots';
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 
 @Component({
   selector: 'app-map',
@@ -8,8 +9,13 @@ import { Spot, spots } from '../config/spots';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements AfterViewInit {
-  @ViewChild('map') map!: google.maps.Map;
+  @ViewChild('map') map!: any;
+  @ViewChild(MapInfoWindow, { static: false })
+  mapInstance!: google.maps.Map;
+  infoWindow!: google.maps.InfoWindow;
+
   markers: Spot[] = spots;
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
   position: google.maps.LatLngLiteral = { lat: 39.5, lng: -0.393 };
   center = { lng: -0.392787, lat: 39.467 };
@@ -25,6 +31,26 @@ export class MapComponent implements AfterViewInit {
   };
 
   ngAfterViewInit() {
-    console.log(this.map);
+    this.setupMap();
+    this.markers.forEach((marker) => {
+      this.markerPositions.push(marker.position);
+    });
+    console.log(this.markerPositions);
+  }
+
+  setupMap() {
+    this.mapInstance = this.map.googleMap;
+    this.infoWindow = new google.maps.InfoWindow();
+  }
+  openInfo(spot: Spot) {
+    this.infoWindow.close();
+
+    this.infoWindow = new google.maps.InfoWindow({
+      content: spot.title,
+      position: spot.position,
+    });
+    console.log(this.infoWindow.getPosition());
+
+    this.infoWindow.open(this.mapInstance);
   }
 }

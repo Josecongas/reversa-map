@@ -9,9 +9,12 @@
   >
     <map-marker
       *ngFor="let spot of markers"
+      #marker="mapMarker"
       [position]="spot.position"
       [options]="spot.options"
+      (mapClick)="openInfo(spot)"
     >
     </map-marker>
+    <map-info-window #MapInfoWindow>Hello Google Maps</map-info-window>
   </google-map>
 </div>
