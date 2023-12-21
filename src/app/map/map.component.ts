@@ -1,6 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
+import { Spot, spots } from '../config/spots';
 
 @Component({
   selector: 'app-map',
@@ -8,6 +9,7 @@ import { mapStyles } from '../config/mapConfig';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
+  spots: Spot[] = spots;
   position: google.maps.LatLngLiteral = { lat: 39.5, lng: -0.393 };
   center = { lng: -0.392787, lat: 39.467 };
   zoom = 14;
@@ -38,39 +40,6 @@ export class MapComponent implements OnInit {
   // Define el color que deseas para el marcador (en formato hexadecimal)
   // var markerColor = '#FF0000'; // Por ejemplo, rojo
 
-  spots: Spot[] = [
-    {
-      position: { lat: 39.49, lng: -0.3763 },
-      title: 'Oro',
-      options: {
-        icon: {
-          url: '../../assets/location-pin.webp', // Ruta a tu icono
-          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
-        },
-      },
-    },
-    {
-      position: { lat: 39.4697, lng: -0.3774 },
-      title: 'Plata',
-      options: {
-        icon: {
-          url: '../../assets/location-pin.webp', // Ruta a tu icono
-          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
-        },
-      },
-    },
-    {
-      position: { lat: 39.44, lng: -0.376 },
-      title: 'Bronce',
-      options: {
-        icon: {
-          url: '../../assets/location-pin.webp', // Ruta a tu icono
-          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
-        },
-      },
-    },
-  ];
-
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer2: Renderer2
@@ -89,12 +58,4 @@ export class MapComponent implements OnInit {
       this.renderer2.appendChild(this.document.head, script);
     });
   }
-}
-
-interface Spot {
-  position: google.maps.LatLngLiteral;
-  title: string;
-  label?: string;
-  icon?: any;
-  options?: any;
 }
