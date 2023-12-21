@@ -29,7 +29,8 @@ export class MapComponent implements OnInit {
       path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, // Puedes usar otros símbolos predeterminados
       fillColor: '#DDDDDD', // Establece el color del marcador
       fillOpacity: 1, // Establece la opacidad del color del marcador (de 0 a 1)
-      strokeWeight: 0, // No hay borde
+      strokeWeight: 0, // No hay borde,
+      scaledSize: new google.maps.Size(10, 10),
     },
     title: 'Mi marcador', // Título del marcador (puedes omitir esto si no deseas un título)
   });
@@ -40,17 +41,34 @@ export class MapComponent implements OnInit {
   spots: Spot[] = [
     {
       position: { lat: 39.49, lng: -0.3763 },
-      label: 'A',
       title: 'Oro',
-      icon: {
-        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW, // Puedes usar otros símbolos predeterminados
-        fillColor: '#eeeeee', // Establece el color del marcador
-        fillOpacity: 1, // Establece la opacidad del color del marcador (de 0 a 1)
-        strokeWeight: 0, // No hay borde
+      options: {
+        icon: {
+          url: '../../assets/location-pin.webp', // Ruta a tu icono
+          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
+        },
       },
     },
-    { position: { lat: 39.4697, lng: -0.3774 }, label: 'B', title: 'Plata' },
-    { position: { lat: 39.44, lng: -0.376 }, label: 'C', title: 'Bronce' },
+    {
+      position: { lat: 39.4697, lng: -0.3774 },
+      title: 'Plata',
+      options: {
+        icon: {
+          url: '../../assets/location-pin.webp', // Ruta a tu icono
+          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
+        },
+      },
+    },
+    {
+      position: { lat: 39.44, lng: -0.376 },
+      title: 'Bronce',
+      options: {
+        icon: {
+          url: '../../assets/location-pin.webp', // Ruta a tu icono
+          scaledSize: { width: 90, height: 90 }, // Tamaño deseado
+        },
+      },
+    },
   ];
 
   constructor(
@@ -75,7 +93,8 @@ export class MapComponent implements OnInit {
 
 interface Spot {
   position: google.maps.LatLngLiteral;
-  label: string;
   title: string;
+  label?: string;
   icon?: any;
+  options?: any;
 }
