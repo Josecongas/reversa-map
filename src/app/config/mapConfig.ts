@@ -156,3 +156,5 @@ export const mapStyles: any = [
     ],
   },
 ];
+
+export const contentString: string = '<div class="map-spot-content"> </div>';

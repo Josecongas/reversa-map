@@ -1,8 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
 import { Spot, spots } from '../config/spots';
-import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -10,7 +8,6 @@ import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 })
 export class MapComponent implements AfterViewInit {
   @ViewChild('map') map!: any;
-  @ViewChild(MapInfoWindow, { static: false })
   mapInstance!: google.maps.Map;
   infoWindow!: google.maps.InfoWindow;
 
@@ -46,11 +43,24 @@ export class MapComponent implements AfterViewInit {
     this.infoWindow.close();
 
     this.infoWindow = new google.maps.InfoWindow({
-      content: spot.title,
+      content: this.buildInfoWindowContent(spot),
       position: spot.position,
+      pixelOffset: new google.maps.Size(0, -70),
     });
     console.log(this.infoWindow.getPosition());
 
     this.infoWindow.open(this.mapInstance);
+  }
+
+  buildInfoWindowContent(spot: Spot): string {
+    const content: string = `
+    <div class="map-spot-content">
+    <div><img src=${spot.logoSrc} width="60px" height="60px"></img></div>
+    <div>
+    <p><h2>${spot.title}</h2></p>
+    </div>
+    </div>
+    `;
+    return content;
   }
 }
