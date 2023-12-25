@@ -2,8 +2,10 @@
 @import "bulma/css/bulma.css";
 
 .map-spot-content {
-  width: 120px;
-  height: 70px;
+  width: 150px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }

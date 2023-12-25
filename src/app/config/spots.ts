@@ -1,6 +1,7 @@
 export interface Spot {
   position: google.maps.LatLngLiteral;
   title: string;
+  direccion?: string;
   label?: string;
   icon?: any;
   options?: any;

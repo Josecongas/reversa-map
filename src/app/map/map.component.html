@@ -7,13 +7,15 @@
     [zoom]="zoom"
     [options]="options"
   >
-    <map-marker
-      *ngFor="let spot of markers"
-      #marker="mapMarker"
-      [position]="spot.position"
-      [options]="spot.options"
-      (mapClick)="openInfo(spot)"
-    >
-    </map-marker>
+    <ng-container *ngIf="markersReady">
+      <map-marker
+        *ngFor="let spot of markers"
+        #marker="mapMarker"
+        [position]="spot.position"
+        [options]="markerOptions"
+        (mapClick)="openInfo(spot)"
+      >
+      </map-marker>
+    </ng-container>
   </google-map>
 </div>
