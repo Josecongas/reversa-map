@@ -31,7 +31,7 @@ export class MapComponent implements AfterViewInit {
   markersReady: boolean = false;
   position: google.maps.LatLngLiteral = { lat: 39.5, lng: -0.393 };
   center = { lng: -0.392787, lat: 39.467 };
-  zoom = 14;
+  zoom = 15;
   options: google.maps.MapOptions = {
     zoomControl: true,
     scrollwheel: true,
