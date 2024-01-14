@@ -6,6 +6,7 @@ export interface Spot {
   icon?: any;
   options?: any;
   logoSrc?: string;
+  active?: boolean;
 }
 
 export const spots: Spot[] = [

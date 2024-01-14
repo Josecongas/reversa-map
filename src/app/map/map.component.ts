@@ -2,19 +2,25 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
+  NgZone,
   ViewChild,
 } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
 import { Spot } from '../config/spots';
 import cityPaqs from '../config/citypaqs.json';
 import { CityPaq } from '../models/citypaqs.interface';
+import { SpotService } from '../services/spot.service';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements AfterViewInit {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private readonly spotService: SpotService,
+    private zone: NgZone
+  ) {}
   @ViewChild('map') map!: any;
   mapInstance!: google.maps.Map;
   infoWindow!: google.maps.InfoWindow;
@@ -46,10 +52,12 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.setupMap();
     this.markers = this.buildMarkers();
+    this.setInitialSpots();
     this.markers.forEach((marker) => {
       this.markerPositions.push(marker.position);
     });
     this.markersReady = true;
+    this.listenMapEvents();
     this.cdr.detectChanges();
   }
 
@@ -68,6 +76,10 @@ export class MapComponent implements AfterViewInit {
     this.infoWindow.open(this.mapInstance);
   }
 
+  setInitialSpots() {
+    this.spotService.setInitialSpots(this.markers);
+  }
+
   buildMarkers(): Spot[] {
     const markers: Spot[] = [];
     cityPaqs.forEach((spot: CityPaq) => {
@@ -78,8 +90,8 @@ export class MapComponent implements AfterViewInit {
           lng: Number(spot.LONGITUD_WGS_84),
         },
         direccion: spot.LOCALIZACION_DOMICILIO,
+        logoSrc: '../../assets/correos.jpeg',
       });
-      console.log(spot);
     });
 
     return markers;
@@ -97,5 +109,17 @@ export class MapComponent implements AfterViewInit {
     </div>
     `;
     return content;
+  }
+
+  listenMapEvents() {
+    // Drag end
+    this.map.mapDragend.subscribe(() => {
+      this.spotService.updateSpots(this.markers, this.map.getBounds());
+    });
+
+    // Zoom changed
+    this.map.zoomChanged.subscribe(() => {
+      this.spotService.updateSpots(this.markers, this.map.getBounds());
+    });
   }
 }

@@ -2,5 +2,12 @@
   <app-navbar></app-navbar>
 </div>
 <div class="map-container">
-  <app-map></app-map>
+  <mat-sidenav-container class="example-container" *ngIf="true">
+    <mat-sidenav mode="side" opened class="spots-sidebar"
+      ><app-spots></app-spots>
+    </mat-sidenav>
+    <mat-sidenav-content><app-map></app-map></mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- <div *ngIf="true">Please open on Stackblitz to see result</div> -->
 </div>

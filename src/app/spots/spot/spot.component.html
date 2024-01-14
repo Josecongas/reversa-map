@@ -1,0 +1,11 @@
+<div
+  class="spot-container"
+  [ngClass]="{ 'selected-spot': spot.active }"
+  (click)="activateSpot()"
+>
+  <p>
+    {{ spot.title }}
+  </p>
+  <img width="120px" heigth="120px" [src]="spot.logoSrc" alt="" />
+  <p>{{ spot.direccion }}</p>
+</div>

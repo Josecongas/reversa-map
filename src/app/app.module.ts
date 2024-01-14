@@ -5,10 +5,19 @@ import { AppComponent } from './app.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapComponent } from './map/map.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpotsComponent } from './spots/spots.component';
+import { SpotComponent } from './spots/spot/spot.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, NavbarComponent],
-  imports: [BrowserModule, GoogleMapsModule],
+  declarations: [AppComponent, MapComponent, NavbarComponent, SpotsComponent, SpotComponent],
+  imports: [
+    BrowserModule,
+    GoogleMapsModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,12 @@
+.spot-container {
+  border: 1px solid rgb(181, 11, 181);
+  min-height: 10rem;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.selected-spot {
+  background-color: #fff0ff;
+}
