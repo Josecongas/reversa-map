@@ -66,8 +66,12 @@ export class MapComponent implements AfterViewInit {
     this.infoWindow = new google.maps.InfoWindow();
   }
   openInfo(spot: Spot) {
+    this.spotService.activateSpotByPosition(spot);
+    const centerPosition: google.maps.LatLngLiteral = spot.position;
+    const bounds = new google.maps.LatLngBounds();
+    bounds.extend(centerPosition);
+    this.map.fitBounds(bounds);
     this.infoWindow.close();
-
     this.infoWindow = new google.maps.InfoWindow({
       content: this.buildInfoWindowContent(spot),
       position: spot.position,
