@@ -8,8 +8,8 @@ import { Spot } from '../config/spots';
 export class SpotService {
   spotsBs: Subject<Spot[]> = new Subject<Spot[]>();
   spots$: Observable<Spot[]> = this.spotsBs.asObservable();
+  activeSpot$: Subject<Spot> = new Subject();
   private initialSpots: Spot[] = [];
-  private spots: Spot[] = [];
   constructor() {}
 
   getSpots(): Observable<Spot[]> {
@@ -17,8 +17,8 @@ export class SpotService {
   }
 
   setInitialSpots(spots: Spot[]) {
+    // this.spotsBs.next(spots);
     this.initialSpots = spots;
-    this.spotsBs.next(spots);
   }
 
   activateSpotByPosition(spot: Spot): void {
@@ -26,6 +26,7 @@ export class SpotService {
       foundSpot.active = false;
       if (foundSpot.position === spot.position) {
         foundSpot.active = true;
+        this.activeSpot$.next(spot);
       }
     });
   }

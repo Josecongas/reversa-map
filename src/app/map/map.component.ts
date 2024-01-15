@@ -65,12 +65,11 @@ export class MapComponent implements AfterViewInit {
     this.mapInstance = this.map.googleMap;
     this.infoWindow = new google.maps.InfoWindow();
   }
-  openInfo(spot: Spot) {
+
+  activateSpotManuallyOnMap(spot: Spot) {
     this.spotService.activateSpotByPosition(spot);
-    const centerPosition: google.maps.LatLngLiteral = spot.position;
-    const bounds = new google.maps.LatLngBounds();
-    bounds.extend(centerPosition);
-    this.map.fitBounds(bounds);
+  }
+  openInfo(spot: Spot) {
     this.infoWindow.close();
     this.infoWindow = new google.maps.InfoWindow({
       content: this.buildInfoWindowContent(spot),
@@ -82,6 +81,13 @@ export class MapComponent implements AfterViewInit {
 
   setInitialSpots() {
     this.spotService.setInitialSpots(this.markers);
+  }
+
+  centerMapBySpot(spot: Spot) {
+    const centerPosition: google.maps.LatLngLiteral = spot.position;
+    const bounds = new google.maps.LatLngBounds();
+    bounds.extend(centerPosition);
+    this.map.fitBounds(bounds);
   }
 
   buildMarkers(): Spot[] {
@@ -124,6 +130,13 @@ export class MapComponent implements AfterViewInit {
     // Zoom changed
     this.map.zoomChanged.subscribe(() => {
       this.spotService.updateSpots(this.markers, this.map.getBounds());
+    });
+    // Active spot change
+    this.spotService.activeSpot$.subscribe((spot: Spot) => {
+      console.log('Spot activo:', spot);
+
+      this.centerMapBySpot(spot);
+      this.openInfo(spot);
     });
   }
 }
