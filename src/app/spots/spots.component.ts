@@ -9,7 +9,7 @@ import { SpotService } from '../services/spot.service';
   styleUrls: ['./spots.component.scss'],
 })
 export class SpotsComponent {
-  spots$: Observable<Spot[]> = this.spotService.getSpots();
+  spots$: Observable<Spot[]> = this.spotService.filteredSpots$;
 
   constructor(private readonly spotService: SpotService) {}
 }

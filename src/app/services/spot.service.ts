@@ -6,15 +6,11 @@ import { Spot } from '../config/spots';
   providedIn: 'root',
 })
 export class SpotService {
-  spotsBs: Subject<Spot[]> = new Subject<Spot[]>();
-  spots$: Observable<Spot[]> = this.spotsBs.asObservable();
+  filteredSpotsBS: Subject<Spot[]> = new Subject<Spot[]>();
+  filteredSpots$: Observable<Spot[]> = this.filteredSpotsBS.asObservable();
   activeSpot$: Subject<Spot> = new Subject();
   private initialSpots: Spot[] = [];
   constructor() {}
-
-  getSpots(): Observable<Spot[]> {
-    return this.spots$;
-  }
 
   setInitialSpots(spots: Spot[]) {
     // this.spotsBs.next(spots);
@@ -41,6 +37,6 @@ export class SpotService {
         spot.position.lng <= bounds.Nh.hi
       );
     });
-    this.spotsBs.next(filteredSpots);
+    this.filteredSpotsBS.next(filteredSpots);
   }
 }

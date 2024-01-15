@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  NgZone,
   ViewChild,
 } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
@@ -18,8 +17,7 @@ import { SpotService } from '../services/spot.service';
 export class MapComponent implements AfterViewInit {
   constructor(
     private cdr: ChangeDetectorRef,
-    private readonly spotService: SpotService,
-    private zone: NgZone
+    private readonly spotService: SpotService
   ) {}
   @ViewChild('map') map!: any;
   mapInstance!: google.maps.Map;
@@ -83,6 +81,10 @@ export class MapComponent implements AfterViewInit {
     this.spotService.setInitialSpots(this.markers);
   }
 
+  setInitialFilteredSpots() {
+    this.spotService.updateSpots(this.markers, this.map.getBounds());
+  }
+
   centerMapBySpot(spot: Spot) {
     const centerPosition: google.maps.LatLngLiteral = spot.position;
     const bounds = new google.maps.LatLngBounds();
@@ -130,6 +132,11 @@ export class MapComponent implements AfterViewInit {
     // Zoom changed
     this.map.zoomChanged.subscribe(() => {
       this.spotService.updateSpots(this.markers, this.map.getBounds());
+    });
+
+    // Map ready on init
+    this.map.idle.subscribe(() => {
+      this.setInitialFilteredSpots();
     });
     // Active spot change
     this.spotService.activeSpot$.subscribe((spot: Spot) => {
