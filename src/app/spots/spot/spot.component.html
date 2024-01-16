@@ -3,9 +3,39 @@
   [ngClass]="{ 'selected-spot': spot.active }"
   (click)="activateSpot()"
 >
-  <p>
-    {{ spot.title }}
-  </p>
-  <img width="120px" heigth="120px" [src]="spot.logoSrc" alt="" />
-  <p>{{ spot.direccion }}</p>
+  <!-- Spot information -->
+  <div class="display_flex spot-information">
+    <!-- Spot details -->
+    <div class="spot-details">
+      <p>
+        {{ spot.title }}
+      </p>
+      <p>{{ spot.direccion }}</p>
+    </div>
+    <!-- Icon container -->
+    <div class="spot-type-image-container">
+      <img
+        class="spot-type-image"
+        src="../../../assets/smart-locker.png"
+        alt=""
+      />
+    </div>
+  </div>
+  <hr />
+  <div class="schedule-information">
+    <p class="full-available">Disponible 24 horas</p>
+  </div>
+  <hr />
+  <div class="company-information display_flex">
+    <div class="company-logo-container display_flex">
+      <img class="company-logo" [src]="spot.logoSrc" alt="" />
+      <div class="company-name-container">
+        <small>Empresa</small>
+        <p class="company-name">Correos</p>
+      </div>
+    </div>
+    <div class="send-button-container">
+      <button class="button is-link is-outlined">Envío</button>
+    </div>
+  </div>
 </div>

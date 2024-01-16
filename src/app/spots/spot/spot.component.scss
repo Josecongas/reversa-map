@@ -1,12 +1,65 @@
 .spot-container {
-  border: 1px solid rgb(181, 11, 181);
+  border: 2px solid rgb(143, 19, 143);
   min-height: 10rem;
-  padding: 20px;
-  margin: 20px;
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .selected-spot {
   background-color: #fff0ff;
+
+  hr {
+    background-color: #f2d0fe;
+  }
+}
+.spot-details {
+  flex: 1;
+}
+
+.spot-type-image-container {
+  flex: 1;
+  text-align: right;
+
+  .spot-type-image {
+    width: 5rem;
+  }
+}
+
+.company-information {
+  justify-content: space-between;
+  .company-logo-container {
+    align-items: center;
+  }
+  .company-logo {
+    width: 3rem;
+  }
+  .company-name-container {
+    padding: 0.6rem;
+    .company-name {
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+}
+
+.schedule-information {
+  .full-available {
+    font-weight: 900;
+  }
+}
+
+.send-button-container {
+  display: flex;
+  align-items: center;
+  // .send-button {
+  //   border: 1.5px solid rgb(143, 19, 143);
+  //   padding: 0.5rem;
+  //   border-radius: 8px;
+  //   width: 4rem;
+  //   text-transform: uppercase;
+  //   background-color: white;
+  //   cursor: pointer;
+  // }
 }
