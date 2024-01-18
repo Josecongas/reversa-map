@@ -15,4 +15,6 @@ export class SpotComponent {
   activateSpot() {
     this.spotService.activateSpotByPosition(this.spot);
   }
+
+  test() {}
 }

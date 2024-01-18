@@ -5,6 +5,10 @@
   margin: 1rem;
   border-radius: 10px;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba(143, 19, 143, 0.2);
+  }
 }
 
 .selected-spot {
@@ -53,13 +57,4 @@
 .send-button-container {
   display: flex;
   align-items: center;
-  // .send-button {
-  //   border: 1.5px solid rgb(143, 19, 143);
-  //   padding: 0.5rem;
-  //   border-radius: 8px;
-  //   width: 4rem;
-  //   text-transform: uppercase;
-  //   background-color: white;
-  //   cursor: pointer;
-  // }
 }
