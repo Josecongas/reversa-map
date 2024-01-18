@@ -5,7 +5,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
-import { Spot } from '../config/spots';
+import { Spot, inPostMockSpots } from '../config/spots';
 import cityPaqs from '../config/citypaqs.json';
 import { CityPaq } from '../models/citypaqs.interface';
 import { SpotService } from '../services/spot.service';
@@ -94,6 +94,7 @@ export class MapComponent implements AfterViewInit {
 
   buildMarkers(): Spot[] {
     const markers: Spot[] = [];
+    // Build the Correos markers
     cityPaqs.forEach((spot: CityPaq) => {
       markers.push({
         title: spot.DESCRIPCION,
@@ -103,16 +104,21 @@ export class MapComponent implements AfterViewInit {
         },
         direccion: spot.LOCALIZACION_DOMICILIO,
         logoSrc: '../../assets/correos.jpeg',
+        company: 'Correos',
       });
     });
+    // TODO: Update this with observable requests
+    // Add the InPost markers
+    markers.push(...inPostMockSpots);
 
     return markers;
   }
 
   buildInfoWindowContent(spot: Spot): string {
+    console.log(spot);
     const content: string = `
     <div class="map-spot-content">
-    <div><img src='../../assets/correos.jpeg',
+    <div><img src='${spot.logoSrc}',
  width="60px" height="60px"></img></div>
     <div>
     <p><h3>${spot.title}</h3></p>

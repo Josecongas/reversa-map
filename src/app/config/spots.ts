@@ -7,7 +7,24 @@ export interface Spot {
   options?: any;
   logoSrc?: string;
   active?: boolean;
+  company?: string;
 }
+
+export const inPostMockSpots: Spot[] = [
+  {
+    position: { lat: 39.49, lng: -0.3963 },
+    title: 'InPost point 1',
+    logoSrc: '../../assets/inpost.png',
+
+    options: {
+      icon: {
+        url: '../../assets/location-pin.webp',
+        scaledSize: { width: 90, height: 90 },
+      },
+    },
+    company: 'InPost',
+  },
+];
 
 export const spots: Spot[] = [
   {

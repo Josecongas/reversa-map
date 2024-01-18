@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Spot } from '../config/spots';
+import { Observable, Subject, of } from 'rxjs';
+import { Spot, inPostMockSpots } from '../config/spots';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,6 @@ export class SpotService {
   constructor() {}
 
   setInitialSpots(spots: Spot[]) {
-    // this.spotsBs.next(spots);
     this.initialSpots = spots;
   }
 
@@ -38,5 +37,9 @@ export class SpotService {
       );
     });
     this.filteredSpotsBS.next(filteredSpots);
+  }
+
+  getInpostPoints(): Observable<Spot[]> {
+    return of(inPostMockSpots);
   }
 }

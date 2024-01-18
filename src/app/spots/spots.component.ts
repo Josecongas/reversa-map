@@ -10,6 +10,6 @@ import { SpotService } from '../services/spot.service';
 })
 export class SpotsComponent {
   spots$: Observable<Spot[]> = this.spotService.filteredSpots$;
-
+  spots2$: Observable<Spot[]> = this.spotService.getInpostPoints();
   constructor(private readonly spotService: SpotService) {}
 }

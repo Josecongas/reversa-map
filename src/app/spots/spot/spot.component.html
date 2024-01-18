@@ -31,11 +31,11 @@
       <img class="company-logo" [src]="spot.logoSrc" alt="" />
       <div class="company-name-container">
         <small>Empresa</small>
-        <p class="company-name">Correos</p>
+        <p class="company-name">{{ spot.company }}</p>
       </div>
     </div>
     <div class="send-button-container">
-      <button (click)="test()" class="button is-link is-outlined">Envío</button>
+      <button class="button is-link is-outlined">Envío</button>
     </div>
   </div>
 </div>
