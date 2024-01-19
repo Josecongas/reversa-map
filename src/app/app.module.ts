@@ -9,9 +9,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpotsComponent } from './spots/spots.component';
 import { SpotComponent } from './spots/spot/spot.component';
+import { SpotOvermapComponent } from './spot-overmap/spot-overmap.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, NavbarComponent, SpotsComponent, SpotComponent],
+  declarations: [
+    AppComponent,
+    MapComponent,
+    NavbarComponent,
+    SpotsComponent,
+    SpotComponent,
+    SpotOvermapComponent,
+  ],
   imports: [
     BrowserModule,
     GoogleMapsModule,

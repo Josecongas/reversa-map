@@ -5,7 +5,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { mapStyles } from '../config/mapConfig';
-import { Spot, inPostMockSpots } from '../config/spots';
+import { Spot, _SpotType, inPostMockSpots } from '../config/spots';
 import cityPaqs from '../config/citypaqs.json';
 import { CityPaq } from '../models/citypaqs.interface';
 import { SpotService } from '../services/spot.service';
@@ -35,7 +35,7 @@ export class MapComponent implements AfterViewInit {
     scrollwheel: true,
     disableDoubleClickZoom: false,
     maxZoom: 17,
-    minZoom: 8,
+    minZoom: 14,
     disableDefaultUI: true,
     styles: mapStyles,
   };
@@ -102,6 +102,7 @@ export class MapComponent implements AfterViewInit {
           lat: Number(spot.LATITUD_WGS_84),
           lng: Number(spot.LONGITUD_WGS_84),
         },
+        type: _SpotType.locker,
         direccion: spot.LOCALIZACION_DOMICILIO,
         logoSrc: '../../assets/correos.jpeg',
         company: 'Correos',
@@ -115,7 +116,6 @@ export class MapComponent implements AfterViewInit {
   }
 
   buildInfoWindowContent(spot: Spot): string {
-    console.log(spot);
     const content: string = `
     <div class="map-spot-content">
     <div><img src='${spot.logoSrc}',
@@ -146,10 +146,8 @@ export class MapComponent implements AfterViewInit {
     });
     // Active spot change
     this.spotService.activeSpot$.subscribe((spot: Spot) => {
-      console.log('Spot activo:', spot);
-
       this.centerMapBySpot(spot);
-      this.openInfo(spot);
+      // this.openInfo(spot);
     });
   }
 }

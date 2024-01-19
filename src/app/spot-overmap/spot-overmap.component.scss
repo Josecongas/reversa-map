@@ -1,0 +1,47 @@
+.spot-overmap {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  min-width: 20rem;
+  min-height: 5rem;
+  z-index: 1;
+  background-color: white;
+  border-radius: 1rem;
+  transform: translate(-50%, -50%);
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  .spot-image {
+    width: 3rem;
+  }
+}
+.logo-container {
+  display: grid;
+  .company-name {
+    margin-top: 0.2rem;
+    font-weight: 500;
+  }
+}
+.spot-info {
+  display: grid;
+  padding: 1rem;
+}
+
+.button-container {
+  .spot-button {
+    overflow: hidden;
+    svg {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg); /* Centrar y rotar */
+      width: 70%;
+      height: auto;
+      fill: white;
+    }
+    img {
+      width: 30px;
+    }
+  }
+}

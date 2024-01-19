@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, of } from 'rxjs';
+import { Observable, ReplaySubject, Subject, of } from 'rxjs';
 import { Spot, inPostMockSpots } from '../config/spots';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Spot, inPostMockSpots } from '../config/spots';
 export class SpotService {
   filteredSpotsBS: Subject<Spot[]> = new Subject<Spot[]>();
   filteredSpots$: Observable<Spot[]> = this.filteredSpotsBS.asObservable();
-  activeSpot$: Subject<Spot> = new Subject();
+  activeSpot$: ReplaySubject<Spot> = new ReplaySubject();
   private initialSpots: Spot[] = [];
   constructor() {}
 
