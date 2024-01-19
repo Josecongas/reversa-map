@@ -1,6 +1,6 @@
-<div class="navbar-container">
+<!-- <div class="navbar-container">
   <app-navbar></app-navbar>
-</div>
+</div> -->
 <div class="map-container">
   <mat-sidenav-container class="example-container" *ngIf="true">
     <mat-sidenav *ngIf="!isMobile" mode="side" opened class="spots-sidebar"
@@ -9,4 +9,5 @@
     <mat-sidenav-content><app-map></app-map></mat-sidenav-content>
   </mat-sidenav-container>
   <app-spot-overmap *ngIf="isMobile"></app-spot-overmap>
+  <app-filters-overmap *ngIf="isMobile"></app-filters-overmap>
 </div>

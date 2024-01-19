@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpotsComponent } from './spots/spots.component';
 import { SpotComponent } from './spots/spot/spot.component';
 import { SpotOvermapComponent } from './spot-overmap/spot-overmap.component';
+import { FiltersOvermapComponent } from './filters-overmap/filters-overmap.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SpotOvermapComponent } from './spot-overmap/spot-overmap.component';
     SpotsComponent,
     SpotComponent,
     SpotOvermapComponent,
+    FiltersOvermapComponent,
   ],
   imports: [
     BrowserModule,

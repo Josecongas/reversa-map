@@ -1,0 +1,11 @@
+.filters-overmap {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  min-width: 20rem;
+  min-height: 5rem;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
