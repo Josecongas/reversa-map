@@ -31,7 +31,7 @@ export class MapComponent implements AfterViewInit {
   center = { lng: -0.392787, lat: 39.467 };
   zoom = 15;
   options: google.maps.MapOptions = {
-    zoomControl: true,
+    zoomControl: false,
     scrollwheel: true,
     disableDoubleClickZoom: false,
     maxZoom: 17,
