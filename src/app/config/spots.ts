@@ -25,7 +25,7 @@ export const inPostMockSpots: Spot[] = [
     direccion: 'Calle de ejemplo Nº 7',
     options: {
       icon: {
-        url: '../../assets/location-pin.webp',
+        url: '../../assets/blue-pin.webp',
         scaledSize: { width: 90, height: 90 },
       },
     },

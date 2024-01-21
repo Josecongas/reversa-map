@@ -155,4 +155,16 @@ export class MapComponent implements AfterViewInit {
       this.centerMapBySpot(spot);
     });
   }
+
+  buildSpotOptions(spot: Spot): any {
+    return {
+      icon: {
+        url:
+          spot.type === _SpotType.locker
+            ? '../../assets/location-pin.webp'
+            : '../../assets/green-pin.webp',
+        scaledSize: { width: 90, height: 90 },
+      },
+    } as any;
+  }
 }

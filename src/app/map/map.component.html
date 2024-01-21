@@ -12,7 +12,7 @@
         *ngFor="let spot of markers$ | async"
         #marker="mapMarker"
         [position]="spot.position"
-        [options]="markerOptions"
+        [options]="buildSpotOptions(spot)"
         (mapClick)="activateSpotManuallyOnMap(spot)"
       >
       </map-marker>
