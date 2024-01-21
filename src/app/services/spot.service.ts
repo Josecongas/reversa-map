@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject, Subject, of } from 'rxjs';
 import { Spot, inPostMockSpots } from '../config/spots';
+import { MapFilters } from '../models/map.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,12 @@ export class SpotService {
   filteredSpotsBS: Subject<Spot[]> = new Subject<Spot[]>();
   filteredSpots$: Observable<Spot[]> = this.filteredSpotsBS.asObservable();
   activeSpot$: ReplaySubject<Spot> = new ReplaySubject();
+  onFilterSubj: Subject<boolean> = new Subject<boolean>();
+
+  private filters: MapFilters = {
+    type: undefined,
+  };
+
   private initialSpots: Spot[] = [];
   constructor() {}
 
@@ -36,10 +43,20 @@ export class SpotService {
         spot.position.lng <= bounds.Nh.hi
       );
     });
+    if (this.filters.type) {
+      filteredSpots = filteredSpots.filter((spot: Spot) => {
+        return spot.type === this.filters.type;
+      });
+    }
     this.filteredSpotsBS.next(filteredSpots);
   }
 
   getInpostPoints(): Observable<Spot[]> {
     return of(inPostMockSpots);
+  }
+
+  setFilters(filters: any): void {
+    this.filters = filters;
+    this.onFilterSubj.next(true);
   }
 }

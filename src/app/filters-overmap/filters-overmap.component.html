@@ -1,4 +1,14 @@
 <div class="filters-overmap">
-  <button class="button is-warning is-rounded">Lockers</button>
-  <button class="button is-link is-rounded">Punto pack</button>
+  <button
+    class="button is-warning is-rounded"
+    (click)="setFilters({ type: 'Smart locker' })"
+  >
+    Lockers
+  </button>
+  <button
+    class="button is-link is-rounded"
+    (click)="setFilters({ type: 'Establecimiento' })"
+  >
+    Punto pack
+  </button>
 </div>

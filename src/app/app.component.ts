@@ -17,7 +17,6 @@ export class AppComponent {
     this._mobileQueryListener = () => {
       // Actualiza la propiedad `isMobile` cuando cambia el tamaño de la pantalla
       this.isMobile = this.mobileQuery.matches;
-      console.log(this.isMobile);
     };
     // Registra un listener para ser notificado cuando cambia el tamaño de la pantalla
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);

@@ -9,7 +9,7 @@
   >
     <ng-container *ngIf="markersReady">
       <map-marker
-        *ngFor="let spot of markers"
+        *ngFor="let spot of markers$ | async"
         #marker="mapMarker"
         [position]="spot.position"
         [options]="markerOptions"

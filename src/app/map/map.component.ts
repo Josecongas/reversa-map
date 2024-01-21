@@ -9,6 +9,7 @@ import { Spot, _SpotType, inPostMockSpots } from '../config/spots';
 import cityPaqs from '../config/citypaqs.json';
 import { CityPaq } from '../models/citypaqs.interface';
 import { SpotService } from '../services/spot.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -25,6 +26,7 @@ export class MapComponent implements AfterViewInit {
 
   cityPaqs: CityPaq[] = cityPaqs;
   markers: Spot[] = [];
+  markers$: Observable<Spot[]> = this.spotService.filteredSpots$;
   markerPositions: google.maps.LatLngLiteral[] = [];
   markersReady: boolean = false;
   position: google.maps.LatLngLiteral = { lat: 39.5, lng: -0.393 };
@@ -140,6 +142,10 @@ export class MapComponent implements AfterViewInit {
       this.spotService.updateSpots(this.markers, this.map.getBounds());
     });
 
+    this.spotService.onFilterSubj.subscribe(() => {
+      this.spotService.updateSpots(this.markers, this.map.getBounds());
+    });
+
     // Map ready on init
     this.map.idle.subscribe(() => {
       this.setInitialFilteredSpots();
@@ -147,7 +153,6 @@ export class MapComponent implements AfterViewInit {
     // Active spot change
     this.spotService.activeSpot$.subscribe((spot: Spot) => {
       this.centerMapBySpot(spot);
-      // this.openInfo(spot);
     });
   }
 }
