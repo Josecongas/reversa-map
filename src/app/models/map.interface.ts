@@ -1,3 +1,4 @@
 export type MapFilters = {
-  type: string | undefined;
+  locker: boolean;
+  pudo: boolean;
 };

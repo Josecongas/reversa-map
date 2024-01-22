@@ -1,13 +1,15 @@
 <div class="filters-overmap">
   <button
     class="button is-warning is-rounded"
-    (click)="setFilters({ type: 'Smart locker' })"
+    [ngClass]="{ 'is-light': !lockerVisibility }"
+    (click)="toggleLockerFilter()"
   >
     Lockers
   </button>
   <button
     class="button is-link is-rounded"
-    (click)="setFilters({ type: 'Establecimiento' })"
+    [ngClass]="{ 'is-light': !pudoVisibility }"
+    (click)="togglePudoFilter()"
   >
     Punto pack
   </button>
