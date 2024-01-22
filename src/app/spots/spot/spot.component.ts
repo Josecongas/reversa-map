@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Spot } from 'src/app/config/spots';
+import { Spot, _SpotType } from 'src/app/config/spots';
 import { SpotService } from 'src/app/services/spot.service';
 
 @Component({
@@ -14,5 +14,16 @@ export class SpotComponent {
 
   activateSpot() {
     this.spotService.activateSpotByPosition(this.spot);
+  }
+
+  getSpotImage(spot: Spot): string {
+    switch (spot.type) {
+      case _SpotType.locker:
+        return '../../../assets/smart-locker.png';
+      case _SpotType.pudo:
+        return '../../../assets/commerce.png';
+      default:
+        return '../../../assets/delivery-unknown.png';
+    }
   }
 }

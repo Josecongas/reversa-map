@@ -1,0 +1,10 @@
+@import "bulma";
+@import "~bulma-switch";
+
+.sidebar-filters-container {
+  display: flex;
+  justify-content: center;
+  .sidebar-filter {
+    padding: 0.5rem;
+  }
+}
