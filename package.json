@@ -23,6 +23,7 @@
     "@angular/router": "~12.2.0",
     "bulma": "^0.9.4",
     "bulma-switch": "^2.0.4",
+    "ng-animate": "^2.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

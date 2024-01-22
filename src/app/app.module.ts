@@ -12,6 +12,7 @@ import { SpotComponent } from './spots/spot/spot.component';
 import { SpotOvermapComponent } from './spot-overmap/spot-overmap.component';
 import { FiltersOvermapComponent } from './filters-overmap/filters-overmap.component';
 import { SpotsSidebarFilterComponent } from './spots/spots-sidebar-filter/spots-sidebar-filter.component';
+import { OrderDeliveryComponent } from './order-delivery/order-delivery.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SpotsSidebarFilterComponent } from './spots/spots-sidebar-filter/spots-
     SpotOvermapComponent,
     FiltersOvermapComponent,
     SpotsSidebarFilterComponent,
+    OrderDeliveryComponent,
   ],
   imports: [
     BrowserModule,

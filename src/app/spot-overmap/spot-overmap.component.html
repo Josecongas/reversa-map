@@ -9,7 +9,10 @@
     <span *ngIf="spot.type === _SpotType.locker">Disponible 24 horas</span>
   </div>
   <div class="button-container">
-    <button class="button is-warning is-focused is-rounded spot-button">
+    <button
+      (click)="createOrder()"
+      class="button is-warning is-focused is-rounded spot-button"
+    >
       <svg
         width="20px"
         height="20px"

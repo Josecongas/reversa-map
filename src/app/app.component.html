@@ -10,4 +10,8 @@
   </mat-sidenav-container>
   <app-spot-overmap *ngIf="isMobile"></app-spot-overmap>
   <app-filters-overmap *ngIf="isMobile"></app-filters-overmap>
+  <app-order-delivery
+    class="order-delivery-container"
+    [ngClass]="{ 'slide-up': (createOrderMode$ | async) }"
+  ></app-order-delivery>
 </div>
