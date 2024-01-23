@@ -1,0 +1,90 @@
+<div class="hero is-link is-fullheight">
+  <div class="hero-body is-justify-content-center is-align-items-center">
+    <form>
+      <div class="columns is-flex is-flex-direction-column box">
+        <div class="column">
+          <label for="name">Nombre completo</label>
+          <input class="input is-primary" type="text" />
+        </div>
+        <div class="column">
+          <label for="name">Nombre de la empresa</label>
+          <input class="input is-primary" type="text" />
+        </div>
+        <div class="column">
+          <label for="name">Dirección de envío</label>
+          <input
+            placeholder="Aquí es donde llegarán tus productos devueltos"
+            class="input is-primary"
+            type="text"
+          />
+        </div>
+        <div class="column">
+          <div class="display_flex control address-inputs">
+            <div>
+              <input
+                placeholder="Código postal"
+                class="input is-primary"
+                type="text"
+              />
+            </div>
+            <div class="select is-primary">
+              <select
+                name="provincia"
+                (change)="selectProvincia()"
+                [(ngModel)]="selectedProvincia"
+              >
+                <option [value]="undefined" disabled>Provincia</option>
+                <option
+                  [value]="provincia.label"
+                  *ngFor="let provincia of provincias"
+                >
+                  {{ provincia.label }}
+                </option>
+              </select>
+            </div>
+            <div class="select is-primary">
+              <select
+                name="localidad"
+                [disabled]="!selectedProvincia"
+                (change)="selectProvincia()"
+                [(ngModel)]="selectedLocalidad"
+              >
+                <option [value]="undefined" disabled>Localidad</option>
+                <option
+                  [value]="localidad.label"
+                  *ngFor="let localidad of getLocalidadByParent()"
+                >
+                  {{ localidad.label }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <label for="email">Correo electrónico</label>
+          <input class="input is-primary" type="text" />
+        </div>
+        <div class="column">
+          <label for="Name">Contraseña</label>
+          <input class="input is-primary" type="password" />
+          <div class="terms-container">
+            <input type="checkbox" />
+            Acepto los
+            <a href="#" class="has-text-primary">términos y condiciones</a>
+          </div>
+        </div>
+        <div class="column">
+          <button class="button is-link is-fullwidth" type="submit">
+            Crear una cuenta
+          </button>
+        </div>
+        <div class="has-text-centered">
+          <p>
+            ¿Ya tienes una cuenta en reversa?
+            <a (click)="goToLogin()" class="has-text-primary">Login</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

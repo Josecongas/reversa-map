@@ -1,0 +1,37 @@
+.navbar-container {
+  height: 5%;
+}
+
+.map-container {
+  position: relative;
+  height: 95%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.spots-sidebar {
+  width: 25%;
+}
+
+.example-container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.order-delivery-container {
+  position: absolute;
+  top: 100%; /* Inicialmente, fuera de la pantalla */
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  padding: 2rem;
+  transition: top 0.5s ease-out; /* Transición en la propiedad 'top' */
+}
+
+.slide-up {
+  top: 0; /* Cuando tiene la clase 'slide-up', aparecerá deslizándose hacia arriba */
+}

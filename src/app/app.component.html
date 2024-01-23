@@ -1,18 +1,1 @@
-<div class="navbar-container">
-  <app-navbar></app-navbar>
-</div>
-<div class="map-container">
-  <mat-sidenav-container class="example-container" *ngIf="true">
-    <mat-sidenav *ngIf="!isMobile" mode="side" opened class="spots-sidebar">
-      <app-spots-sidebar-filter></app-spots-sidebar-filter>
-      <app-spots></app-spots>
-    </mat-sidenav>
-    <mat-sidenav-content><app-map></app-map></mat-sidenav-content>
-  </mat-sidenav-container>
-  <app-spot-overmap *ngIf="isMobile"></app-spot-overmap>
-  <app-filters-overmap *ngIf="isMobile"></app-filters-overmap>
-  <app-order-delivery
-    class="order-delivery-container"
-    [ngClass]="{ 'slide-up': (createOrderMode$ | async) }"
-  ></app-order-delivery>
-</div>
+<router-outlet></router-outlet>
