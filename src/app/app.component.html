@@ -1,10 +1,11 @@
-<!-- <div class="navbar-container">
+<div class="navbar-container">
   <app-navbar></app-navbar>
-</div> -->
+</div>
 <div class="map-container">
   <mat-sidenav-container class="example-container" *ngIf="true">
-    <mat-sidenav *ngIf="!isMobile" mode="side" opened class="spots-sidebar"
-      ><app-spots></app-spots>
+    <mat-sidenav *ngIf="!isMobile" mode="side" opened class="spots-sidebar">
+      <app-spots-sidebar-filter></app-spots-sidebar-filter>
+      <app-spots></app-spots>
     </mat-sidenav>
     <mat-sidenav-content><app-map></app-map></mat-sidenav-content>
   </mat-sidenav-container>
