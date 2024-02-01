@@ -20,10 +20,7 @@ export class RegisterComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  selectProvincia() {
-    console.log(this.selectedProvincia);
-    console.log(this.selectedLocalidad);
-  }
+  selectProvincia() {}
 
   getLocalidadByParent(): CountryPlace[] {
     if (!this.selectedProvincia) {

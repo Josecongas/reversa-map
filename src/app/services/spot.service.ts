@@ -38,10 +38,10 @@ export class SpotService {
     let filteredSpots: Spot[] = [];
     filteredSpots = spots.filter((spot: Spot) => {
       return (
-        spot.position.lat >= bounds.di.lo &&
-        spot.position.lat <= bounds.di.hi &&
-        spot.position.lng >= bounds.Nh.lo &&
-        spot.position.lng <= bounds.Nh.hi
+        spot.position.lat >= bounds.bi.lo &&
+        spot.position.lat <= bounds.bi.hi &&
+        spot.position.lng >= bounds.Lh.lo &&
+        spot.position.lng <= bounds.Lh.hi
       );
     });
     filteredSpots = filteredSpots.filter((spot: Spot) => {
